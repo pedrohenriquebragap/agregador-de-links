@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(../assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --surface-color-border: 1.5px solid black;
+  --social-link-hover: rgba(0, 0, 0, 0.4);
+  --social-link-border: 1px solid white;
+  --switch-bg-url: url(../assets/MoonStars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(../assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --surface-color-border: 1.5px solid black;
+  --social-link-hover: rgba(0, 0, 0, 0.1);
+  --social-link-border: 1px solid black;
+  --switch-bg-url: url(../assets/Sun.svg);
+}
+
+body {
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0px 24px;
+}
+
+/*perfil*/
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: white var(--switch-bg-url) no-repeat center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*Lista de links*/
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  font-weight: 500;
+  -webkit-backdrop-filter: blur(4px);
+  transition: transform 0.3s ease-in-out;
+}
+
+ul li a:hover {
+  transform: scale(1.1);
+  background: var(--surface-color-hover);
+  border: var(--surface-color-border);
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px 0px;
+  font-size: 40px;
+  transition: all 0.3s ease-in-out;
+}
+
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#social-links ion-icon {
+  position: relative; /* Ensure the pseudo-element is positioned in relation to the icon */
+  padding: 8px;
+  overflow: visible; /* This should already be set to visible */
+}
+
+#social-links ion-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100%; /* Adjust the width and height as needed */
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--social-link-hover); /* Transparent background */
+  border: var(--social-link-border); /* Thin white border */
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+#social-links ion-icon:hover::before {
+  transform: translate(-50%, -50%) scale(0.9); /* Increase the scale for a larger sphere */
+}
+
+footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
